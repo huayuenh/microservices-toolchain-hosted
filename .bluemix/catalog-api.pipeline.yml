@@ -18,6 +18,7 @@ stages:
     build_type: shell
     script: |-
       #!/bin/bash
+      export IKS_BETA_VERSION=1.0
       export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
       npm install
 
@@ -41,6 +42,7 @@ stages:
     coverage_file_pattern: ./tests/server/coverage/reports/coverage.json
     script: |-
       #!/bin/bash
+      export IKS_BETA_VERSION=1.0
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
         export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
@@ -100,7 +102,7 @@ stages:
     type: tester
     script: |-
       #!/bin/bash
-
+      export IKS_BETA_VERSION=1.0
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
       export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
@@ -120,6 +122,7 @@ stages:
       api_key: ${API_KEY}
     script: |
       #!/bin/bash
+      export IKS_BETA_VERSION=1.0
       export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
 
       SERVICE=$(cf services | grep myMicroservicesCloudant ||:)
@@ -168,6 +171,7 @@ stages:
     SELECT_CMD: custom
     COMMAND: |-
       #!/bin/bash
+      export IKS_BETA_VERSION=1.0
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
         export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
@@ -217,7 +221,7 @@ stages:
     type: tester
     script: |-
       #!/bin/bash
-
+      export IKS_BETA_VERSION=1.0
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
       export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
@@ -237,6 +241,7 @@ stages:
       api_key: ${API_KEY}
     script: |-
       #!/bin/bash
+      export IKS_BETA_VERSION=1.0
       export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
 
       SERVICE=$(cf services | grep myMicroservicesCloudant ||:)
